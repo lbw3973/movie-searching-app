@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+body {
+  background-color: rgb(20, 20, 20);
+}
+header {
+  padding: 0 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+header > a {
+  font-family: 'Maven Pro', sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+  color: #e50914;
+  text-decoration: none;
+  letter-spacing: 1.5px;
+}
+header nav {
+  display: flex;
+}
+header nav .home {
+
+}
+header nav .about {
+
+}
+header nav .owner {
+  
+}
+.container {
+  display: flex;
+
+}
+.container > input {
+  border-radius: 25px;
+  width: 10%;
+}
+.container #btnSearch {
+  border: none;
+}
+input {
+
+}
