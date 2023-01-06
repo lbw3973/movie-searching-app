@@ -1,52 +1,93 @@
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
 body {
-  background-color: rgb(20, 20, 20);
-  /* max-width: 1800px; */
+  background: linear-gradient(135deg, #feccff, #ccf7fe, #fcffe4);
+  height: 100vh;
+  /* overflow: hidden; */
 }
 input {
 
 }
 header {
-  padding: 0 70px;
-  height: 70px;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* padding: 0 70px; */
+  margin-top: 20px;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
 }
-header .wrap > a {
-  font-family: 'Poiret One', sans-serif;
-  font-size: 35px;
-  font-weight: bold;
-  color: #e50914;
-  text-decoration: none;
-  letter-spacing: 1.5px;
-}
-header .wrap {
+header .header-container {
+  /* position: relative; */
   max-width: 1440px;
   display: flex;
   align-items: center;
+  gap: 30px;
+  padding: 0 70px;
 }
-header nav {
-  display: flex;
-}
-header .wrap nav .home {
+header .header-container .home-link {
 
 }
-header .wrap nav .about {
-
+header .header-container .home-link img.main-icon {
+  width: 80px;
+  height: 80px;
 }
-header .wrap nav .owner {
-  
+header .header-container span {
+  font-family: 'Poiret One', sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+  color: #585858;
+  letter-spacing: 1.5px;
+  line-height: 16px;
 }
-
-.container {
-  display: flex;
-
+header .header-container .owner {
+  position: absolute;
+  right: 5%;
 }
-.container > input {
+header .owner > a {
+  display: inline-block;
+  background: url("../images/main-icon-info.png") no-repeat;
+  background-size: cover;
+  text-decoration: none;
+  width: 50px;
+  height: 50px;
   border-radius: 25px;
-  width: 10%;
 }
-.container #btnSearch {
+header .owner > a:hover {
+  background: url("https://avatars.githubusercontent.com/u/75530371?v=4") no-repeat;
+  background-size: cover;
+}
+
+section .container {
+  margin: 20px auto;
+  max-width: 1200px;
+  position: relative;
+}
+section .container .search {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
+}
+section .container .search > input {
+  border-radius: 25px;
+  padding: 5px 20px;
+  width: 30%;
+  font-size: 30px;
+  flex-grow: 1;
+}
+section .container .search #btnSearch {
   border: none;
+  position: absolute;
+  right: 15px;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+  cursor: pointer;
 }

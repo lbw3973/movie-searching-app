@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="icon" href="favicon.png">
+  <title>Movie Searching</title>
 
 
   <!-- Google Icons -->
@@ -24,22 +25,26 @@
 
   <!-- HEADER -->
   <header>
-    <div class="wrap">
-      <a href="#/">Movie Searching</a>
-      <nav>
-        <div class="home">
-          <a href=""> Home </a>
-        </div>
-        <div class="about"></div>
-        <div class="owner"></div>
-      </nav>
-  </div>
+    <div class="header-container">
+      <a class="home-link" href="#/">
+        <img class="main-icon" src="favicon.png" alt="favicon">
+      </a>
+      <span>Movie Searching</span>
+      <div class="owner">
+        <a href="https://github.com/lbw3973" target="blank"></a>
+      </div>
+    </div>
   </header>
-  <div class="container">
-    <input type="text" />
-    <button class="material-symbols-outlined" id="btnSearch">Search</button>
-    <ul class="movies"></ul>
-    <button class="view-more">더보기..</button>
-  </div>
+
+  <!-- SECTION -->
+  <section>
+    <div class="container">
+      <div class="search">
+        <input type="text" />
+        <button class="material-symbols-outlined" id="btnSearch">Search</button>
+      </div>
+      <ul class="movies"></ul>
+    </div>
+  </section>
 </body>
 </html>

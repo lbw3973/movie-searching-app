@@ -37,12 +37,11 @@ async function getMovies() {
   console.log(json)
   moviess = json.Search
 
-
   if(json.Response === "True"){
     return moviess
-  }else{
-    return null
   }
+  return null
+  
 }
 function renderMovies(movies, isFirst) {
   const movieEls = movies.map(function (movie) {
