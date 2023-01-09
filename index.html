@@ -14,17 +14,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@200&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@200&display=swap" rel="stylesheet">
 
   <!-- Reset.css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">
-
   <link rel="stylesheet" href="style/main.css">
+
+  <!-- Lodash -->
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js" integrity="sha512-tQFq+nb/TSS648SDzWbSj0A67t4I1PFzR0U6Oi/yEYFyUbAIwg74SOCbr7t2X1Rn+iln7sYwfh8y+z7p0gddOw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
   <script type="module" defer src="js/main.js"></script>
 </head>
+
 <body>
 
   <!-- HEADER -->
   <header>
+
     <div class="header-container">
       <a class="home-link" href="#/">
         <img class="main-icon" src="favicon.png" alt="favicon">
@@ -34,17 +45,31 @@
         <a href="https://github.com/lbw3973" target="blank"></a>
       </div>
     </div>
+    
   </header>
 
   <!-- SECTION -->
   <section>
+
     <div class="container">
       <div class="search">
         <input type="text" />
         <button class="material-symbols-outlined" id="btnSearch">Search</button>
+        <!-- <button class="view-more"></button> -->
       </div>
+    </div>
+    <div class="counter"></div>
+    <div class="result">
       <ul class="movies"></ul>
     </div>
+
   </section>
+
+  <!-- FLOATING -->
+  <div class="floatingSticky">
+    <div id="to-top">
+      <img src="images/btn-gotop.png" alt="위로 올리기">
+    </div>
+  </div>
 </body>
 </html>
