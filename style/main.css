@@ -81,12 +81,32 @@ section .container .search {
   position: relative;
 }
 
-section .container .search>input {
+section .container .search #select-year{
+  border: none;
+  /* appearance: none; */
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  font-size: 20px;
+  text-align: center;
+  padding: 0 10px;
+  border-radius: 25px 0px 0px 25px;
+}
+
+section .container .search > input {
+  border: 1px solid rgb(179, 66, 66);
   border-radius: 25px;
-  padding: 5px 20px;
+  padding: 15px 30px 15px 130px;
   width: 30%;
-  font-size: 30px;
+  font-size: 25px;
   flex-grow: 1;
+}
+
+section .container .search > input:focus {
+  outline-color: rgb(221, 13, 13);
+  transition: 1s;
 }
 
 section .container .search #btnSearch {
@@ -97,6 +117,10 @@ section .container .search #btnSearch {
   bottom: 0;
   background-color: transparent;
   cursor: pointer;
+}
+section .container .search #btnSearch:hover {
+  transition: .2s;
+  transform: scale(1.7);
 }
 
 section .counter {
@@ -182,10 +206,22 @@ section .result .movies .list .info .title {
   padding: 0 20px;
 }
 
+section .dialog {
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  display: none;
+}
+section .dialog .detail {
+
+}
+
 #to-top {
   width: 64px;
   height: 64px;
-  background-color: black;
+  background-color: rgb(216, 210, 121);
   border-radius: 4px;
   cursor: pointer;
   display: flex;

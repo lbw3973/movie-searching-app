@@ -3,19 +3,32 @@ const buttonEl = document.querySelector('button#btnSearch')
 const moviesEl = document.querySelector('ul.movies')
 const counterEl = document.querySelector('.counter')
 const toTopEl = document.querySelector('#to-top');
+const selectEl = document.querySelector('#select-year')
+const curYear = new Date().getFullYear()
+const detailEl = document.querySelector('.dialog')
 
 let searchText = ''
 let pageNumber = 1
+let searchYear
+
+for(let i = curYear; i >= curYear - 50; --i){
+  let selectYear = document.createElement('option')
+  selectYear.classList.add('option')
+  selectYear.innerHTML = i
+  selectYear.value = i
+  selectEl.appendChild(selectYear)
+}
 
 inputEl.addEventListener("keyup", function (event) {
   if(event.key === 'Enter'){
     event.preventDefault()
-    document.getElementById('btnSearch').click()
+    btnSearch.click()
   }
 })
 
 buttonEl.addEventListener('click', async function () {
   searchText = inputEl.value
+  searchYear = selectEl.value
   if(searchText.length < 3){
     alert("Please enter at least 3 characters")
     return
@@ -23,15 +36,17 @@ buttonEl.addEventListener('click', async function () {
   pageNumber = 1
   moviesEl.innerHTML = ''
 
-  const movies = await getMovies(searchText,'', pageNumber)
-  await getCountMovies(searchText)
+  const movies = await getMovies(searchText, searchYear, pageNumber)
+  await getCountMovies(searchText, searchYear)
 
   if(movies != null){
     renderMovies(movies, true)
+    showMovieDialog()
   }
 })
 
 const getCountMovies = async (title, year = '') => {
+  // movieCounter가 이미 만들어져 있으면 다시 생성하지 않는다
   if(!document.querySelector('.movieCounter')){
     let divEl = document.createElement('div')
     divEl.classList.add('movieCounter')
@@ -55,21 +70,21 @@ const getCountMovies = async (title, year = '') => {
 }
 
 const viewmore = async () => {
-  const movies = await getMovies(searchText, '', ++pageNumber)
+  const movies = await getMovies(searchText, searchYear, ++pageNumber)
   if(movies != null){
     renderMovies(movies, false)
   }
 }
 
-let moviess = []
+
 async function getMovies(title, year = '', page = 1) {
   const s = `&s=${title}`
-  const y = `&y=${year}`
+  const y = year === 'all' ? '' : `&y=${year}`
   const p = `&page=${page}`
   const res = await fetch(`https://omdbapi.com/?apikey=7035c60c&s=${s}${y}${p}`)
   const json = await res.json()
   console.log(json)
-  moviess = json.Search
+  let moviess = json.Search
 
   if(json.Response === "True"){
     return moviess
@@ -77,6 +92,7 @@ async function getMovies(title, year = '', page = 1) {
   return null
   
 }
+
 function renderMovies(movies, isFirst) {
   const movieEls = movies.map(function (movie) {
     const liEl = document.createElement('li')
@@ -92,6 +108,7 @@ function renderMovies(movies, isFirst) {
     posterEl.append(infoEl)
 
     liEl.classList.add('list')
+    liEl.dataset.id = movie.imdbID
     titleEl.classList.add('title')
     titleEl.textContent = movie.Title
     infoEl.classList.add('info')
@@ -107,6 +124,8 @@ function renderMovies(movies, isFirst) {
   })
   moviesEl.append(...movieEls)
 }
+
+// 무한 스크롤
 window.addEventListener('scroll', function() {
   if(window.scrollY >= document.documentElement.scrollHeight - window.innerHeight){
     if(document.querySelector('.movies > li')){
@@ -115,10 +134,36 @@ window.addEventListener('scroll', function() {
   }
 })
 
+function showMovieDialog() {
+  const movies = moviesEl.querySelectorAll('li')
+
+  movies.forEach(x => x.addEventListener('click', (event) => {
+    const movieId = x.dataset.id
+
+    getMovieInfo(movieId)
+  }))
+}
+
+async function getMovieInfo(id) {
+  const res = await fetch(`https://omdbapi.com/?apikey=7035c60c&i=${id}&plot=full`)
+  const json = await res.json()
+
+  if (json.Response === 'True') {
+    // return json
+    setMovieInfo(json)
+  }
+  return json.Error
+}
+
+function setMovieInfo(movie) {
+  detailEl.style.display = 'block'
+  detailEl.innerHTML = 'asdwqdqwasdasdwqwqdd'
+}
+
 
 
 // to-top 버튼
-window.addEventListener('scroll', _.throttle(function(){
+window.addEventListener('scroll', _.throttle(function() {
   if(window.scrollY > 500){
     gsap.to(toTopEl, 0, {
       x: -132

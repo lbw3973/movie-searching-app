@@ -42,7 +42,7 @@
       </a>
       <span>Movie Searching</span>
       <div class="owner">
-        <a href="https://github.com/lbw3973" target="blank"></a>
+        <a href="https://github.com/lbw3973" target="_blank" title="About"></a>
       </div>
     </div>
     
@@ -53,6 +53,9 @@
 
     <div class="container">
       <div class="search">
+        <select id="select-year">
+          <option value="all">All Years</option>
+        </select>
         <input type="text" />
         <button class="material-symbols-outlined" id="btnSearch">Search</button>
         <!-- <button class="view-more"></button> -->
@@ -63,6 +66,10 @@
       <ul class="movies"></ul>
     </div>
 
+    <div class="dialog">
+      <div class="detail"></div>
+    </div>
+
   </section>
 
   <!-- FLOATING -->
@@ -71,5 +78,6 @@
       <img src="images/btn-gotop.png" alt="위로 올리기">
     </div>
   </div>
+
 </body>
 </html>
