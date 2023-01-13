@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed&display=swap');
 
 body {
   background: linear-gradient(135deg, #feccff, #ccf7fe, #fcffe4);
   background-attachment: fixed;
-  height: 100vh;
   /* overflow: hidden; */
 }
-
-input {}
-
+img {
+  overflow: hidden;
+}
 header {
   position: relative;
   top: 0;
@@ -76,7 +76,7 @@ section .container {
 
 section .container .search {
   display: flex;
-  max-width: 400px;
+  max-width: 500px;
   margin: 0 auto;
   position: relative;
 }
@@ -93,6 +93,7 @@ section .container .search #select-year{
   text-align: center;
   padding: 0 10px;
   border-radius: 25px 0px 0px 25px;
+  cursor: pointer;
 }
 
 section .container .search > input {
@@ -151,17 +152,21 @@ section .result .movies .list {
   position: relative;
   align-content: center;
   justify-content: center;
+  cursor: pointer;
+  transition: all .2s linear;
 }
-
+section .result .movies .list:hover {
+  transform: scale(1.05);
+}
 section .result .movies .list .poster {
   --width-size: 250px;
   width: var(--width-size);
   height: calc(var(--width-size) * 1.5);
+  max-width: 100%;
   background-size: cover;
   overflow: hidden;
   border-radius: 20px;
 }
-
 section .result .movies .list .info {
   position: absolute;
   right: 0;
@@ -206,17 +211,95 @@ section .result .movies .list .info .title {
   padding: 0 20px;
 }
 
-section .dialog {
+section .detail {
   position: fixed;
-  top: 25%;
-  left: 25%;
-  width: 50%;
-  height: 50%;
+  top: 0;
+  width: 100%;
+  height: 100%;
   display: none;
+  backdrop-filter: blur(5px);
+  z-index: 100;
 }
-section .dialog .detail {
+section .detail .dialog {
+  position: relative;
+  top: 25%;
+  bottom: 25%;
+  left: 25%;
+  right: 25%;
+  width: 1000px;
+  height: 500px;
+  z-index: 101;
+  background-color: #818181;
+  border-radius: 10px;
+  border: 2px solid #fcffe4;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 20px;
+}
+section .detail .dialog .material-symbols-outlined {
+  position: absolute;
+  font-size: 60px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  /* border: 1px solid rgb(63, 63, 63);
+  border-radius: 50px; */
+}
+section .detail .dialog .movie-image {
+  margin: auto 0;
+  width: 300px;
+  height: 450px;
+}
+section .detail .dialog .movie-info {
+  position: relative;
+  display: flex;
+  padding: 20px;
+  line-height: 2;
+  font-family: 'Encode Sans Condensed', sans-serif;
+}
+section .detail .dialog .movie-info .title {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Encode Sans Condensed', sans-serif;
+  letter-spacing: 1.5px;
+}
+section .detail .dialog .movie-info .country {
+  font-size: 20px;
+}
+section .detail .dialog .movie-info .country::before {
+  content: 'Country  - ';
+  font-weight: bold;
+}
+section .detail .dialog .movie-info .director {
+  font-size: 20px;
+}
+section .detail .dialog .movie-info .director::before {
+  content: 'Director  - ';
+  font-weight: bold;
+}
+section .detail .dialog .movie-info .actor {
+  font-size: 20px;
+}
+section .detail .dialog .movie-info .actor::before {
+  content: 'Actor  - ';
+  font-weight: bold;
+}
+section .detail .dialog .movie-info .metascore {
+  font-size: 20px;
+}
+section .detail .dialog .movie-info .metascore::before {
+  content: 'Meta Score  - ';
+  font-weight: bold;
+}
+section .detail .dialog .movie-info .boxoffice {
+  font-size: 20px;
+}
+section .detail .dialog .movie-info .boxoffice::before {
+  content: 'Box Office  - ';
+  font-weight: bold;
+}
 
-}
 
 #to-top {
   width: 64px;
@@ -231,4 +314,7 @@ section .dialog .detail {
   bottom: 26px;
   right: -100px;
   z-index: 15;
+}
+.scroll-lock {
+  overflow: hidden;
 }
